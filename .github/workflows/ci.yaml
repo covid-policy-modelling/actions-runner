@@ -8,7 +8,6 @@ env:
 
 jobs:
   publish:
-    needs: test
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,7 +28,7 @@ jobs:
           # Cannot use GITHUB_TOKEN to push to GHCR
           password: ${{ secrets.GPR_PAT }}
 
-      - name: Push image (Local)
+      - name: Push image
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
           # Change all uppercase to lowercase
